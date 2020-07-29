@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Entity\Quote;
 use Doctrine\ORM\EntityRepository;
+use Knp\Component\Pager\PaginatorInterface;
 
 class QuoteRepository extends EntityRepository
 {
@@ -13,20 +14,18 @@ class QuoteRepository extends EntityRepository
     /**
      * @param  int  $page
      * @param  int  $perPage
-     * @return Quote[]
+     * @param  PaginatorInterface  $paginator
+     * @return iterable
      */
-    public function getQuotes(int $page, int $perPage): array
+    public function getQuotes(int $page, int $perPage, PaginatorInterface $paginator): iterable
     {
-        $page -= $page >0 ? 1 : 0;
-
         $queryBuilder = $this->getEntityManager()->createQueryBuilder();
+
         $queryBuilder->select('t')
             ->from($this->getClassName(), 't')
-            ->orderBy('t.createdAt', 'DESC')
-            ->setFirstResult($perPage * $page)
-            ->setMaxResults($perPage);
+            ->orderBy('t.createdAt', 'DESC');
 
-        return $queryBuilder->getQuery()->getResult();
+        return $paginator->paginate($queryBuilder, $page, $perPage)->getItems();
     }
 
 

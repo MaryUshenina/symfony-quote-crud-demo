@@ -8,6 +8,7 @@ use App\Entity\Quote;
 use App\Repository\QuoteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
+use Knp\Component\Pager\PaginatorInterface;
 
 class QuoteService
 {
@@ -15,10 +16,14 @@ class QuoteService
     /** @var EntityManagerInterface */
     private $entityManager;
 
+    /** @var PaginatorInterface */
+    private $paginator;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, PaginatorInterface $paginator)
     {
         $this->entityManager = $entityManager;
+
+        $this->paginator = $paginator;
     }
 
     /**
@@ -40,7 +45,7 @@ class QuoteService
         /** @var QuoteRepository $quoteRepository */
         $quoteRepository = $this->getRepository();
 
-        return $quoteRepository->getQuotes($page, $perPage);
+        return $quoteRepository->getQuotes($page, $perPage, $this->paginator);
     }
 
     /**
