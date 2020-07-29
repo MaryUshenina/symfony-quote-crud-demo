@@ -39,7 +39,7 @@ class QuoteController extends AbstractFOSRestController
 
     public function getQuotesList(?int $page = null, ?int $perPage = null): View
     {
-        $quotes = $this->quoteService->getQuotes($page ?? 0, $perPage ?? self::DEFAULT_FEED_SIZE);
+        $quotes = $this->quoteService->getQuotes($page ?? 1, $perPage ?? self::DEFAULT_FEED_SIZE);
 
         return View::create(['quotes' => $quotes], empty($quotes) ? 204 : 200);
     }
