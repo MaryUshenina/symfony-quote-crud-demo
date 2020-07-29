@@ -18,6 +18,16 @@ class Quote
 {
     use CreatedAtTrait, UpdatedAtTrait;
 
+    const TYPE_ABOUT_LIFE = 1;
+    const TYPE_MOTIVATION = 2;
+    const TYPE_OTHER = 3;
+
+    const TYPES_AVAILABLE = [
+        self::TYPE_ABOUT_LIFE => 'about_life',
+        self::TYPE_MOTIVATION => 'motivations',
+        self::TYPE_OTHER => 'other',
+    ];
+
     /**
      * @Mapping\Column(name="id", type="bigint", unique=true)
      * @Mapping\Id
@@ -31,7 +41,7 @@ class Quote
     private $author;
 
     /**
-     * @Mapping\Column(type="string", length=10, nullable=false)
+     * @Mapping\Column(type="integer",  nullable=false)
      */
     private $type;
 
@@ -75,17 +85,17 @@ class Quote
 
 
     /**
-     * @return string
+     * @return int
      */
-    public function getType(): string
+    public function getType(): int
     {
         return $this->type;
     }
 
     /**
-     * @param  string  $type
+     * @param  int  $type
      */
-    public function setType(string $type): void
+    public function setType(int $type): void
     {
         $this->type = $type;
     }

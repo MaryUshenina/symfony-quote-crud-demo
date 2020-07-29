@@ -61,7 +61,7 @@ class QuoteController extends AbstractFOSRestController
      * @Annotations\Post("")
      *
      * @Annotations\RequestParam(name="text")
-     * @Annotations\RequestParam(name="type", requirements=".{1,10}")
+     * @Annotations\RequestParam(name="type", requirements="\d+")
      * @Annotations\RequestParam(name="author", requirements=".{1,50}",  nullable=true)
      *
      * @param  string  $text
@@ -84,7 +84,7 @@ class QuoteController extends AbstractFOSRestController
      * @Annotations\Put("/{quoteId}")
      *
      * @Annotations\RequestParam(name="text")
-     * @Annotations\RequestParam(name="type", requirements=".{1,10}")
+     * @Annotations\RequestParam(name="type", requirements="\d+")
      * @Annotations\RequestParam(name="author", requirements=".{1,50}", nullable=true)
      *
      * @param  int  $quoteId
