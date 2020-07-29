@@ -39,7 +39,7 @@ class QuoteController extends AbstractFOSRestController
 
     public function getQuotesList(?int $page = null, ?int $perPage = null): View
     {
-        $quotes = $this->quoteService->getQuotes($page ?? 0, $perPage ?? self::DEFAULT_FEED_SIZE);
+        $quotes = $this->quoteService->getQuotes($page ?? 1, $perPage ?? self::DEFAULT_FEED_SIZE);
 
         return View::create(['quotes' => $quotes], empty($quotes) ? 204 : 200);
     }
@@ -61,7 +61,7 @@ class QuoteController extends AbstractFOSRestController
      * @Annotations\Post("")
      *
      * @Annotations\RequestParam(name="text")
-     * @Annotations\RequestParam(name="type", requirements=".{1,10}")
+     * @Annotations\RequestParam(name="type", requirements="\d+")
      * @Annotations\RequestParam(name="author", requirements=".{1,50}",  nullable=true)
      *
      * @param  string  $text
@@ -84,7 +84,7 @@ class QuoteController extends AbstractFOSRestController
      * @Annotations\Put("/{quoteId}")
      *
      * @Annotations\RequestParam(name="text")
-     * @Annotations\RequestParam(name="type", requirements=".{1,10}")
+     * @Annotations\RequestParam(name="type", requirements="\d+")
      * @Annotations\RequestParam(name="author", requirements=".{1,50}", nullable=true)
      *
      * @param  int  $quoteId
