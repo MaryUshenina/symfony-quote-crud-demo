@@ -53,7 +53,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{host}}/api/v1/quote?page=0&perPage=2",
+											"raw": "{{host}}/api/v1/quote?page=1&perPage=2",
 											"host": [
 												"{{host}}"
 											],
@@ -65,7 +65,7 @@
 											"query": [
 												{
 													"key": "page",
-													"value": "0"
+													"value": "1"
 												},
 												{
 													"key": "perPage",
@@ -164,7 +164,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"text\": \"test_text2 updated\",\n    \"type\": \"1234567890\",\n    \"author\": \"teauthor123\"\n}",
+											"raw": "{\n    \"text\": \"test_text2 updated\",\n    \"type\": 1,\n    \"author\": \"teauthor123\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
