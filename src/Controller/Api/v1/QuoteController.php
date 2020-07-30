@@ -10,7 +10,7 @@ use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations;
 
 /**
- * @Annotations\Route("/api/v1/quote")
+ * @Annotations\Route("/api/v1/quotes")
  */
 class QuoteController extends AbstractFOSRestController
 {

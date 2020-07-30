@@ -27,7 +27,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{host}}/api/v1/quote",
+											"raw": "{{host}}/api/v1/quotes",
 											"host": [
 												"{{host}}"
 											],
@@ -53,7 +53,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{host}}/api/v1/quote?page=1&perPage=2",
+											"raw": "{{host}}/api/v1/quotes?page=1&perPage=2",
 											"host": [
 												"{{host}}"
 											],
@@ -89,7 +89,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{host}}/api/v1/quote/56",
+											"raw": "{{host}}/api/v1/quotes/56",
 											"host": [
 												"{{host}}"
 											],
@@ -131,7 +131,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{host}}/api/v1/quote",
+											"raw": "{{host}}/api/v1/quotes",
 											"host": [
 												"{{host}}"
 											],
